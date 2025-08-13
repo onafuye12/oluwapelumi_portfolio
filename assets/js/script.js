@@ -1,27 +1,23 @@
-// Improved navbar functionality
+// Prevent other scripts from closing the menu
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle fix
-    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbar = document.querySelector('.navbar');
     const navbarCollapse = document.querySelector('.navbar-collapse');
     
-    if (navbarToggler && navbarCollapse) {
-        navbarToggler.addEventListener('click', function() {
-            navbarCollapse.classList.toggle('show');
-        });
-        
-        // Close menu when clicking on a nav link (for mobile)
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 992) { // Only for mobile
-                    navbarCollapse.classList.remove('show');
-                }
-            });
-        });
-    }
+    // Proper mobile toggle
+    document.querySelector('.navbar-toggler').addEventListener('click', function() {
+        navbarCollapse.classList.toggle('show');
+    });
     
-    // Navbar background change on scroll
+    // Close only when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInside = navbar.contains(event.target);
+        if (!isClickInside && window.innerWidth < 992) {
+            navbarCollapse.classList.remove('show');
+        }
+    });
+    
+    // Navbar scroll effect
     window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
             navbar.classList.add('bg-dark', 'shadow');
         } else {
