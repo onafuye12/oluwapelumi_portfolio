@@ -16,12 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Navbar scroll effect
+   
+    // Replace your current scroll event with this
     window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        // Always keep bg-dark, only toggle shadow
+        navbar.classList.add('bg-dark');
         if (window.scrollY > 50) {
-            navbar.classList.add('bg-dark', 'shadow');
+            navbar.classList.add('shadow');
         } else {
-            navbar.classList.remove('bg-dark', 'shadow');
+            navbar.classList.remove('shadow');
         }
     });
 });
