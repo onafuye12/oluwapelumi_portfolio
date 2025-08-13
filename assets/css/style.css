@@ -117,3 +117,24 @@ a:hover {
         height: 150px;
     }
 }
+/* Fix for navbar dropdown */
+.navbar-collapse {
+    transition: none !important; /* Remove any transitions that might be causing issues */
+}
+
+/* Keep dropdown open on hover (for desktop) */
+@media (min-width: 992px) {
+    .navbar .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+/* Better mobile menu behavior */
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
